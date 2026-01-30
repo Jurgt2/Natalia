@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Rosa Romántica en Frasco</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: url("Natalia.jpg");
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* ================= FONDOS LATERALES ================= */
+    .fondo-lateral {
+      position: fixed;
+      top: 0;
+      width: 22vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      background: linear-gradient(
+        to bottom,
+        rgba(255,230,240,0.55),
+        rgba(255,255,255,0.9)
+      );
+    }
+
+    .fondo-izq { left: 0; }
+    .fondo-der { right: 0; }
+
+    .frase-lateral {
+      position: fixed;
+      top: 50%;
+      width: 20vw;
+      transform: translateY(-50%);
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.9rem;
+      color: #c72c6c;
+      opacity: 0.45;
+      text-align: center;
+      line-height: 1.4;
+      text-shadow: 0 2px 10px #fff;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .frase-izq { left: 1vw; }
+    .frase-der { right: 1vw; }
+
+    /* ================= FRASCO ================= */
+    .frasco-container {
+      position: relative;
+      width: 200px;
+      height: 300px;
+      margin-bottom: 30px;
+      filter: drop-shadow(0 8px 32px #a3c9f7cc);
+      z-index: 2;
+    }
+
+    .frasco-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .rosa-svg {
+      position: absolute;
+      top: 90px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      z-index: 2;
+      animation: rose-move 2.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes rose-move {
+      0% { transform: translateX(-50%) translateY(0); }
+      100% { transform: translateX(-50%) translateY(-16px); }
+    }
+
+    .luz {
+      position: absolute;
+      left: 50%;
+      top: 60px;
+      width: 180px;
+      height: 60px;
+      background: radial-gradient(ellipse at center, #fff8 0%, #fff0 80%);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      filter: blur(2px);
+    }
+
+    .corazon {
+      position: absolute;
+      left: 50%;
+      top: 160px;
+      width: 32px;
+      height: 32px;
+      z-index: 4;
+      animation: caer 5s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes caer {
+      0% { transform: translate(-50%,0) scale(1); opacity:1; }
+      100% { transform: translate(-50%,320px) scale(0.7); opacity:0; }
+    }
+
+    .frase {
+      color: #c72c6c;
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.1rem;
+      text-align: center;
+      margin-top: 30px;
+      text-shadow: 0 2px 16px #fff;
+      max-width: 500px;
+      z-index: 2;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- FONDOS -->
+  <div class="fondo-lateral fondo-izq"></div>
+  <div class="fondo-lateral fondo-der"></div>
+
+  <!-- FRASES LATERALES -->
+  <div class="frase-lateral frase-izq">
+    ME CAES<br>
+    MAL.
+  </div>
+
+  <div class="frase-lateral frase-der">
+    <br>
+    CONTIGO ME SIENTO SEGURO.
+  </div>
+
+  <!-- FRASCO -->
+  <div class="frasco-container">
+    <div class="luz"></div>
+
+    <svg class="frasco-svg" viewBox="0 0 340 480">
+      <ellipse cx="170" cy="440" rx="90" ry="24" fill="#e3f0ff" fill-opacity="0.7"/>
+      <rect x="80" y="120" width="180" height="320" rx="60" fill="#fff" fill-opacity="0.13"/>
+      <ellipse cx="170" cy="120" rx="90" ry="28" fill="#e3f0ff" fill-opacity="0.7"/>
+    </svg>
+
+    <svg class="rosa-svg" viewBox="0 0 120 260">
+      <path d="M60,120 Q65,180 55,240" stroke="#2e8b57" stroke-width="7" fill="none"/>
+      <ellipse cx="60" cy="100" rx="22" ry="22" fill="#ffb347"/>
+    </svg>
+  </div>
+
+  <div class="frase">
+    Mi amor por ti durará hasta que caiga el último corazón,<br>
+    
+  </div>
+
+  <script>
+    function crearCorazon() {
+      const frasco = document.querySelector('.frasco-container');
+      const c = document.createElement('div');
+      c.className = 'corazon';
+      c.innerHTML = `
+        <svg viewBox="0 0 32 29">
+          <path d="M23.6,2.6c-2.6,0-4.9,1.7-5.6,4.1C16.3,4.3,14,2.6,11.4,2.6
+          C7.3,2.6,4,6,4,10.1c0,7.2,12,15.3,12,15.3s12-8.1,12-15.3
+          C28,6,24.7,2.6,23.6,2.6z" fill="#ff69b4"/>
+        </svg>`;
+      frasco.appendChild(c);
+      setTimeout(() => c.remove(), 5000);
+    }
+    setInterval(crearCorazon, 500);
+  </script>
+
+</body>
+</html>

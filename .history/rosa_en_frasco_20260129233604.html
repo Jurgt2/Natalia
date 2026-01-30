@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Rosa Romántica en Frasco</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body {
+    background: url("Natalia.jpg");
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
+}
+/* ================= FONDOS LATERALES ================= */
+.fondo-lateral {
+    position: fixed;
+    top: 0;
+    width: 22vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        rgba(255,230,240,0.55),
+        rgba(255,255,255,0.9)
+    );
+}
+.fondo-izq { left: 0; }
+.fondo-der { right: 0; }
+.frase-lateral {
+    position: fixed;
+    top: 50%;
+    width: 20vw;
+    transform: translateY(-50%);
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.9rem;
+    color: #c72c6c;
+    opacity: 0.45;
+    text-align: center;
+    line-height: 1.4;
+    text-shadow: 0 2px 10px #fff;
+    pointer-events: none;
+    z-index: 1;
+}
+.frase-izq { left: 1vw; }
+.frase-der { right: 1vw; }
+/* ================= FRASCO ================= */
+.frasco-container {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    margin-bottom: 30px;
+    filter: drop-shadow(0 8px 32px #a3c9f7cc);
+    z-index: 2;
+}
+.frasco-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+.rosa-svg {
+    position: absolute;
+    top: 85px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;          /* un poco más grande para mejor detalle */
+    z-index: 2;
+    animation: rose-move 2.8s ease-in-out infinite alternate;
+}
+@keyframes rose-move {
+    0%   { transform: translateX(-50%) translateY(0); }
+    100% { transform: translateX(-50%) translateY(-14px); }
+}
+.luz {
+    position: absolute;
+    left: 50%;
+    top: 55px;
+    width: 180px;
+    height: 60px;
+    background: radial-gradient(ellipse at center, #fff8 0%, #fff0 80%);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    filter: blur(2px);
+}
+.corazon {
+    position: absolute;
+    left: 50%;
+    top: 160px;
+    width: 32px;
+    height: 32px;
+    z-index: 4;
+    animation: caer 5s linear infinite;
+    pointer-events: none;
+}
+@keyframes caer {
+    0%   { transform: translate(-50%,0) scale(1); opacity:1; }
+    100% { transform: translate(-50%,320px) scale(0.7); opacity:0; }
+}
+.frase {
+    color: #c72c6c;
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.1rem;
+    text-align: center;
+    margin-top: 30px;
+    text-shadow: 0 2px 16px #fff;
+    max-width: 500px;
+    z-index: 2;
+}
+</style>
+</head>
+<body>
+<!-- FONDOS -->
+<div class="fondo-lateral fondo-izq"></div>
+<div class="fondo-lateral fondo-der"></div>
+
+<!-- FRASES LATERALES -->
+<div class="frase-lateral frase-izq">
+    Me caes<br>mal.
+</div>
+<div class="frase-lateral frase-der">
+    Contigo<br>me siento seguro.
+</div>
+
+<!-- FRASCO -->
+<div class="frasco-container">
+    <div class="luz"></div>
+    <svg class="frasco-svg" viewBox="0 0 340 480">
+        <ellipse cx="170" cy="440" rx="90" ry="24" fill="#e3f0ff" fill-opacity="0.7"/>
+        <rect x="80" y="120" width="180" height="320" rx="60" fill="#fff" fill-opacity="0.13"/>
+        <ellipse cx="170" cy="120" rx="90" ry="28" fill="#e3f0ff" fill-opacity="0.7"/>
+    </svg>
+
+    <!-- GERBERA SVG – versión muy parecida a ilustración vector realista de gerbera rosa -->
+    <svg class="rosa-svg" viewBox="0 0 120 280" xmlns="http://www.w3.org/2000/svg">
+        <!-- Tallo natural con curva suave -->
+        <path d="M60 135 Q 70 200 58 260 Q 55 275 60 285" 
+              stroke="#2e8b57" stroke-width="6" stroke-linecap="round" fill="none"/>
+
+        <!-- Capa exterior: 20 pétalos delgados, alargados y puntiagudos -->
+        <g id="petalos-exterior">
+            <ellipse cx="60" cy="105" rx="5" ry="34" fill="#ff69b4" transform="rotate(0 60 105)"/>
+            <ellipse cx="60" cy="105" rx="5" ry="34" fill="#ff69b4" transform="rotate(18 60 105)"/>
+            <ellipse cx="60" cy="105" rx="5" ry="34" fill="#ff69b4" transform="rotate(36 60 105)"/>
+            <ellipse cx="60" cy="105" rx="5" ry="34" fill="#ff69b4" transform="rotate(54 60 105)"/>
+            <ellipse cx="60" cy="105" rx="5" ry="34" fill="#ff69b4" transform="rotate(72 60 105)"/>
+            <ellipse cx="60" cy="105" rx="5" ry="34" fill="#ff69b4" transform="rotate(90 60 105)"/>
+            <ellipse cx="60" cy="105" rx="5" ry="34" fill="#ff69b4" transform="rotate(108 60 105)"/>
+            <ellipse cx="60" cy="105" rx="5" ry="34" fill="#ff69b4" transform="rotate(126 60 105)"/>
+            <ellipse cx="60" cy="105" rx="5" ry="34" fill="#ff69b4" transform="rotate(144 60 105)"/>
+            <ellipse cx="60" cy="105" rx="5" ry="34" fill="#ff69b4" transform="rotate(162 60 105)"/>
+            <ellipse cx="60" cy="105" rx="5" ry="34" fill="#ff69b4" transform="rotate(180 60 105)"/>
+            <ellipse cx="60" cy="105" rx="5" ry="34" fill="#ff69b4" transform="rotate(198 60 105)"/>
+            <ellipse cx="60" cy="105" rx="5" ry="34" fill="#ff69b4" transform="rotate(216 60 105)"/>
+            <ellipse cx="60" cy="105" rx="5" ry="34" fill="#ff69b4" transform="rotate(234 60 105)"/>
+            <ellipse cx="60" cy="105" rx="5" ry="34" fill="#ff69b4" transform="rotate(252 60 105)"/>
+            <ellipse cx="60" cy="105" rx="5" ry="34" fill="#ff69b4" transform="rotate(270 60 105)"/>
+            <ellipse cx="60" cy="105" rx="5" ry="34" fill="#ff69b4" transform="rotate(288 60 105)"/>
+            <ellipse cx="60" cy="105" rx="5" ry="34" fill="#ff69b4" transform="rotate(306 60 105)"/>
+            <ellipse cx="60" cy="105" rx="5" ry="34" fill="#ff69b4" transform="rotate(324 60 105)"/>
+            <ellipse cx="60" cy="105" rx="5" ry="34" fill="#ff69b4" transform="rotate(342 60 105)"/>
+        </g>
+
+        <!-- Capa intermedia: pétalos más cortos y ligeramente más claros para volumen -->
+        <g id="petalos-intermedios" opacity="0.95">
+            <ellipse cx="60" cy="102" rx="6.5" ry="26" fill="#ff85c0" transform="rotate(9 60 102)"/>
+            <ellipse cx="60" cy="102" rx="6.5" ry="26" fill="#ff85c0" transform="rotate(27 60 102)"/>
+            <ellipse cx="60" cy="102" rx="6.5" ry="26" fill="#ff85c0" transform="rotate(45 60 102)"/>
+            <ellipse cx="60" cy="102" rx="6.5" ry="26" fill="#ff85c0" transform="rotate(63 60 102)"/>
+            <ellipse cx="60" cy="102" rx="6.5" ry="26" fill="#ff85c0" transform="rotate(81 60 102)"/>
+            <ellipse cx="60" cy="102" rx="6.5" ry="26" fill="#ff85c0" transform="rotate(99 60 102)"/>
+            <ellipse cx="60" cy="102" rx="6.5" ry="26" fill="#ff85c0" transform="rotate(117 60 102)"/>
+            <ellipse cx="60" cy="102" rx="6.5" ry="26" fill="#ff85c0" transform="rotate(135 60 102)"/>
+            <ellipse cx="60" cy="102" rx="6.5" ry="26" fill="#ff85c0" transform="rotate(153 60 102)"/>
+            <ellipse cx="60" cy="102" rx="6.5" ry="26" fill="#ff85c0" transform="rotate(171 60 102)"/>
+        </g>
+
+        <!-- Centro detallado (disco + textura) -->
+        <g id="centro">
+            <circle cx="60" cy="102" r="19" fill="#ffb347"/>
+            <circle cx="60" cy="102" r="14" fill="#ff8c00" opacity="0.9"/>
+            <circle cx="60" cy="102" r="9" fill="#e08e2c"/>
+            <!-- Textura de puntitos claros -->
+            <circle cx="54" cy="96" r="1.8" fill="#fff8e1"/>
+            <circle cx="66" cy="96" r="1.7" fill="#fff8e1"/>
+            <circle cx="57" cy="108" r="2" fill="#fff8e1"/>
+            <circle cx="64" cy="104" r="1.6" fill="#fff8e1"/>
+            <circle cx="59" cy="98" r="1.5" fill="#fff8e1"/>
+            <circle cx="62" cy="110" r="1.4" fill="#fff8e1"/>
+        </g>
+    </svg>
+</div>
+
+<div class="frase">
+    Mi amor por ti durará hasta que caiga el último corazón.
+</div>
+
+<script>
+function crearCorazon() {
+    const frasco = document.querySelector('.frasco-container');
+    const c = document.createElement('div');
+    c.className = 'corazon';
+    c.innerHTML = `
+        <svg viewBox="0 0 32 29">
+          <path d="M23.6,2.6c-2.6,0-4.9,1.7-5.6,4.1C16.3,4.3,14,2.6,11.4,2.6
+          C7.3,2.6,4,6,4,10.1c0,7.2,12,15.3,12,15.3s12-8.1,12-15.3
+          C28,6,24.7,2.6,23.6,2.6z" fill="#ff69b4"/>
+        </svg>`;
+    frasco.appendChild(c);
+    setTimeout(() => c.remove(), 5000);
+}
+setInterval(crearCorazon, 500);
+</script>
+</body>
+</html>

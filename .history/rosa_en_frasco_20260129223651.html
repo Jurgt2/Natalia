@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Rosa en Frasco para Ti</title>
+  <style>
+    body {
+      background: #0a183d;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .frasco-container {
+      position: relative;
+      width: 300px;
+      height: 420px;
+      margin-bottom: 30px;
+    }
+    /* Frasco SVG */
+    .frasco-svg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 1;
+    }
+    /* Rosa SVG */
+    .rosa-svg {
+      position: absolute;
+      top: 60px; left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      z-index: 2;
+      animation: rose-move 2s ease-in-out infinite alternate;
+    }
+    @keyframes rose-move {
+      0% { transform: translateX(-50%) translateY(0); }
+      100% { transform: translateX(-50%) translateY(-10px); }
+    }
+    /* Corazones */
+    .corazon {
+      position: absolute;
+      left: 50%;
+      top: 120px;
+      width: 24px;
+      height: 24px;
+      z-index: 3;
+      opacity: 0.8;
+      pointer-events: none;
+      animation: caer 4s linear infinite;
+    }
+    @keyframes caer {
+      0% { transform: translate(-50%, 0) scale(1) rotate(0deg); opacity: 1; }
+      80% { opacity: 1; }
+      100% { transform: translate(-50%, 260px) scale(0.7) rotate(40deg); opacity: 0; }
+    }
+    /* Frase */
+    .frase {
+      color: #fff;
+      font-size: 1.1rem;
+      text-align: center;
+      margin-top: 10px;
+      text-shadow: 0 2px 8px #000;
+      max-width: 350px;
+    }
+  </style>
+</head>
+<body>
+  <div class="frasco-container">
+    <!-- Frasco SVG -->
+    <svg class="frasco-svg" viewBox="0 0 300 420">
+      <ellipse cx="150" cy="60" rx="70" ry="25" fill="#fff6" stroke="#b3e0ff" stroke-width="3"/>
+      <rect x="80" y="60" width="140" height="260" rx="70" fill="#fff2" stroke="#b3e0ff" stroke-width="3"/>
+      <ellipse cx="150" cy="320" rx="70" ry="25" fill="#fff6" stroke="#b3e0ff" stroke-width="3"/>
+      <rect x="120" y="20" width="60" height="40" rx="20" fill="#b3e0ff" stroke="#b3e0ff" stroke-width="2"/>
+    </svg>
+    <!-- Rosa SVG -->
+    <svg class="rosa-svg" viewBox="0 0 60 160">
+      <!-- Tallo -->
+      <rect x="28" y="60" width="4" height="60" fill="#2e8b57"/>
+      <!-- Hoja izquierda -->
+      <ellipse cx="22" cy="90" rx="8" ry="4" fill="#3cb371" transform="rotate(-30 22 90)"/>
+      <!-- Hoja derecha -->
+      <ellipse cx="38" cy="110" rx="8" ry="4" fill="#3cb371" transform="rotate(30 38 110)"/>
+      <!-- Pétalos -->
+      <ellipse cx="30" cy="50" rx="18" ry="22" fill="#ff4fa3"/>
+      <ellipse cx="30" cy="40" rx="10" ry="14" fill="#ff7fcf"/>
+      <ellipse cx="30" cy="60" rx="12" ry="8" fill="#ff4fa3"/>
+      <ellipse cx="40" cy="55" rx="6" ry="10" fill="#ff7fcf"/>
+      <ellipse cx="20" cy="55" rx="6" ry="10" fill="#ff7fcf"/>
+    </svg>
+    <!-- Corazones generados por JS -->
+  </div>
+  <div class="frase">
+    Mi amor por ti durará hasta que salga el último corazón, pero los corazones que caen de la rosa tienen que ser infinitos.
+  </div>
+  <script>
+    // Función para crear corazones infinitos
+    function crearCorazon() {
+      const frasco = document.querySelector('.frasco-container');
+      const corazon = document.createElement('div');
+      corazon.className = 'corazon';
+      corazon.innerHTML = `
+        <svg viewBox="0 0 32 29" width="24" height="24">
+          <path d="M23.6,2.6c-2.6,0-4.9,1.7-5.6,4.1C16.3,4.3,14,2.6,11.4,2.6C7.3,2.6,4,6,4,10.1
+            c0,7.2,12,15.3,12,15.3s12-8.1,12-15.3C28,6,24.7,2.6,23.6,2.6z" fill="#ff4fa3" stroke="#fff" stroke-width="1"/>
+        </svg>
+      `;
+      // Posición aleatoria cerca del centro de la rosa
+      const offset = Math.random() * 40 - 20;
+      corazon.style.left = `calc(50% + ${offset}px)`;
+      corazon.style.animationDuration = `${3.5 + Math.random() * 2}s`;
+      frasco.appendChild(corazon);
+      setTimeout(() => corazon.remove(), 5000);
+    }
+    setInterval(crearCorazon, 600);
+  </script>
+</body>
+</html>
